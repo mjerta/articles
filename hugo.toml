@@ -1,4 +1,4 @@
-baseURL = 'https://https://mjerta.github.io/articles/'  # or 'http://your-vps-ip/'
+baseURL = 'https://https://mjerta.github.io/'  # or 'http://your-vps-ip/'
 languageCode = 'en-us'
 title = 'articles'
 theme = 'LoveIt'
@@ -15,7 +15,6 @@ theme = 'LoveIt'
     name = "articles"
     pre = "<i class='fas fa-code-branch'></i>"
     typeit = false
-kk
 [menu]
   [[menu.main]]
     identifier = "posts"
