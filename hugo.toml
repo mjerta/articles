@@ -1,4 +1,4 @@
-baseURL = 'https://https://mjerta.github.io/'  # or 'http://your-vps-ip/'
+baseURL = 'https://mjerta.github.io/articles/'  # or 'http://your-vps-ip/'
 languageCode = 'en-us'
 title = 'articles'
 theme = 'LoveIt'
