@@ -1,0 +1,59 @@
+baseURL = 'https://articles.mpdev.nl'
+languageCode = 'en-us'
+title = 'articles'
+theme = 'LoveIt'
+[params]
+  # Basic site author info
+
+  [params.author]
+    name = "Maarten Postma"
+    # Try one of these three—they are the most common for this theme family:
+    avatar = "/images/avatar.png"
+    # gravatarEmail = "your-email@example.com" # Alternative if you use Gravatar
+    # thumbnail = "/avatar.png"
+[params.header.title]
+    name = "articles"
+    pre = "<i class='fas fa-code-branch'></i>"
+    typeit = false
+
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    pre = '<i class="fas fa-fw fa-archive"></i>'
+    weight = 1
+
+[params.home.profile]
+    enable = true
+    # Added your text here
+    title = "Maarten Postma"
+    subtitle = "Welcome to mpdev articles" 
+    social = true
+    typeit = true
+    avatarURL = "/images/avatar.png"
+
+[params.social]
+    GitHub = ""
+    Twitter = ""
+    # Use lowercase 'd' for the theme to recognize it
+    Linkedin = "maarten-postma" 
+
+[params.page.share]
+    enable = true
+    Twitter = true
+    X = true
+    Threads = false
+    Line = false
+    Weibo = false
+    Diaspora = false
+    # Fixed casing here too
+    Linkedin = true 
+    # Fixed typo: changed 'Telgram' to 'Telegram'
+    Telegram = false 
+    Facebook = false
+    Whatsapp = true
+    Reddit = false
+    Pinterest = false
+    Tumblr = false
+    HackerNews = false

@@ -1,0 +1,874 @@
+archetypedir = 'archetypes'
+assetdir = 'assets'
+baseurl = 'https://articles.mpdev.nl'
+cachedir = '/home/mjerta/.cache/hugo_cache'
+capitalizelisttitles = true
+contentdir = 'content'
+datadir = 'data'
+defaultcontentlanguage = 'en'
+defaultcontentrole = 'guest'
+defaultoutputformat = 'html'
+environment = 'production'
+i18ndir = 'i18n'
+languagecode = 'en-us'
+layoutdir = 'layouts'
+pluralizelisttitles = true
+publishdir = 'public'
+resourcedir = 'resources'
+staticdir = ['static']
+summarylength = 70
+theme = ['LoveIt']
+themesdir = 'themes'
+timeout = '60s'
+title = 'mpdev articles'
+titlecasestyle = 'AP'
+workingdir = '/home/mjerta/notes/personal-notes/projects/project-manager-backend/quickstart'
+
+[author]
+
+[build]
+  useresourcecachewhen = 'fallback'
+
+  [build.buildstats]
+
+  [[build.cachebusters]]
+    source = '(postcss|tailwind)\.config\.js'
+    target = '(css|styles|scss|sass)'
+
+[caches]
+  [caches.assets]
+    dir = ':resourceDir/_gen'
+    maxage = -1
+
+  [caches.getresource]
+    dir = ':cacheDir/:project'
+    maxage = -1
+
+  [caches.images]
+    dir = ':resourceDir/_gen'
+    maxage = -1
+
+  [caches.misc]
+    dir = ':cacheDir/:project'
+    maxage = -1
+
+  [caches.modulegitinfo]
+    dir = ':cacheDir/modules'
+    maxage = '24h'
+
+  [caches.modulequeries]
+    dir = ':cacheDir/modules'
+    maxage = '24h'
+
+  [caches.modules]
+    dir = ':cacheDir/modules'
+    maxage = -1
+
+[contenttypes]
+  [contenttypes.'text/asciidoc']
+
+  [contenttypes.'text/html']
+
+  [contenttypes.'text/markdown']
+
+  [contenttypes.'text/org']
+
+  [contenttypes.'text/pandoc']
+
+  [contenttypes.'text/rst']
+
+[deployment]
+  invalidatecdn = true
+  maxdeletes = 256
+  workers = 10
+
+[frontmatter]
+  date = ['date', 'publishdate', 'pubdate', 'published', 'lastmod', 'modified']
+  expirydate = ['expirydate', 'unpublishdate']
+  lastmod = [':git', 'lastmod', 'modified', 'date', 'publishdate', 'pubdate', 'published']
+  publishdate = ['publishdate', 'pubdate', 'published', 'date']
+
+[httpcache]
+  respectcachecontrolnostoreinrequest = true
+
+  [httpcache.cache]
+    [httpcache.cache.for]
+      excludes = ['**']
+
+  [[httpcache.polls]]
+    disable = true
+    high = '0s'
+    low = '0s'
+
+    [httpcache.polls.for]
+      includes = ['**']
+
+[imaging]
+  anchor = 'smart'
+  bgcolor = 'ffffff'
+  compression = 'lossy'
+  quality = 75
+  resamplefilter = 'box'
+
+  [imaging.exif]
+    excludefields = 'GPS|Exif|Exposure[M|P|B]|Contrast|Resolution|Sharp|JPEG|Metering|Sensing|Saturation|ColorSpace|Flash|WhiteBalance'
+
+  [imaging.meta]
+    fields = ['! *{GPS,Exif,Exposure[MPB],Contrast,Resolution,Sharp,JPEG,Metering,Sensing,Saturation,ColorSpace,Flash,WhiteBalance}*']
+    sources = ['exif', 'iptc']
+
+  [imaging.webp]
+    hint = 'photo'
+    method = 2
+
+[languages]
+  [languages.en]
+    languagecode = 'en-us'
+
+[markup]
+  defaultmarkdownhandler = 'goldmark'
+
+  [markup.asciidocext]
+    backend = 'html5'
+    failurelevel = 'fatal'
+    noheaderorfooter = true
+    safemode = 'unsafe'
+
+    [markup.asciidocext.attributes]
+
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      definitionlist = true
+      linkify = true
+      linkifyprotocol = 'https'
+      strikethrough = true
+      table = true
+      tasklist = true
+
+      [markup.goldmark.extensions.cjk]
+        eastasianlinebreaksstyle = 'simple'
+
+      [markup.goldmark.extensions.extras]
+        [markup.goldmark.extensions.extras.delete]
+
+        [markup.goldmark.extensions.extras.insert]
+
+        [markup.goldmark.extensions.extras.mark]
+
+        [markup.goldmark.extensions.extras.subscript]
+
+        [markup.goldmark.extensions.extras.superscript]
+
+      [markup.goldmark.extensions.footnote]
+        backlinkhtml = '&#x21a9;&#xfe0e;'
+        enable = true
+
+      [markup.goldmark.extensions.passthrough]
+        [markup.goldmark.extensions.passthrough.delimiters]
+
+      [markup.goldmark.extensions.typographer]
+        apostrophe = '&rsquo;'
+        ellipsis = '&hellip;'
+        emdash = '&mdash;'
+        endash = '&ndash;'
+        leftanglequote = '&laquo;'
+        leftdoublequote = '&ldquo;'
+        leftsinglequote = '&lsquo;'
+        rightanglequote = '&raquo;'
+        rightdoublequote = '&rdquo;'
+        rightsinglequote = '&rsquo;'
+
+    [markup.goldmark.parser]
+      autoheadingid = true
+      autoidtype = 'github'
+      wrapstandaloneimagewithinparagraph = true
+
+      [markup.goldmark.parser.attribute]
+        title = true
+
+    [markup.goldmark.renderer]
+
+    [markup.goldmark.renderhooks]
+      [markup.goldmark.renderhooks.image]
+        useembedded = 'auto'
+
+      [markup.goldmark.renderhooks.link]
+        useembedded = 'auto'
+
+  [markup.highlight]
+    codefences = true
+    linenostart = 1
+    linenumbersintable = true
+    noclasses = true
+    style = 'monokai'
+    tabwidth = 4
+    wrapperclass = 'highlight'
+
+  [markup.tableofcontents]
+    endlevel = 3
+    startlevel = 2
+
+[mediatypes]
+  [mediatypes.'application/json']
+    delimiter = '.'
+    suffixes = ['json']
+
+  [mediatypes.'application/manifest+json']
+    delimiter = '.'
+    suffixes = ['webmanifest']
+
+  [mediatypes.'application/octet-stream']
+    delimiter = '.'
+
+  [mediatypes.'application/pdf']
+    delimiter = '.'
+    suffixes = ['pdf']
+
+  [mediatypes.'application/rss+xml']
+    delimiter = '.'
+    suffixes = ['xml', 'rss']
+
+  [mediatypes.'application/toml']
+    delimiter = '.'
+    suffixes = ['toml']
+
+  [mediatypes.'application/wasm']
+    delimiter = '.'
+    suffixes = ['wasm']
+
+  [mediatypes.'application/xml']
+    delimiter = '.'
+    suffixes = ['xml']
+
+  [mediatypes.'application/yaml']
+    delimiter = '.'
+    suffixes = ['yaml', 'yml']
+
+  [mediatypes.'font/otf']
+    delimiter = '.'
+    suffixes = ['otf']
+
+  [mediatypes.'font/ttf']
+    delimiter = '.'
+    suffixes = ['ttf']
+
+  [mediatypes.'image/avif']
+    delimiter = '.'
+    suffixes = ['avif']
+
+  [mediatypes.'image/bmp']
+    delimiter = '.'
+    suffixes = ['bmp']
+
+  [mediatypes.'image/gif']
+    delimiter = '.'
+    suffixes = ['gif']
+
+  [mediatypes.'image/heic']
+    delimiter = '.'
+    suffixes = ['heic']
+
+  [mediatypes.'image/heif']
+    delimiter = '.'
+    suffixes = ['heif']
+
+  [mediatypes.'image/jpeg']
+    delimiter = '.'
+    suffixes = ['jpg', 'jpeg', 'jpe', 'jif', 'jfif']
+
+  [mediatypes.'image/png']
+    delimiter = '.'
+    suffixes = ['png']
+
+  [mediatypes.'image/svg+xml']
+    delimiter = '.'
+    suffixes = ['svg']
+
+  [mediatypes.'image/tiff']
+    delimiter = '.'
+    suffixes = ['tif', 'tiff']
+
+  [mediatypes.'image/webp']
+    delimiter = '.'
+    suffixes = ['webp']
+
+  [mediatypes.'text/asciidoc']
+    delimiter = '.'
+    suffixes = ['adoc', 'asciidoc', 'ad']
+
+  [mediatypes.'text/calendar']
+    delimiter = '.'
+    suffixes = ['ics']
+
+  [mediatypes.'text/css']
+    delimiter = '.'
+    suffixes = ['css']
+
+  [mediatypes.'text/csv']
+    delimiter = '.'
+    suffixes = ['csv']
+
+  [mediatypes.'text/html']
+    delimiter = '.'
+    suffixes = ['html', 'htm']
+
+  [mediatypes.'text/javascript']
+    delimiter = '.'
+    suffixes = ['js', 'jsm', 'mjs']
+
+  [mediatypes.'text/jsx']
+    delimiter = '.'
+    suffixes = ['jsx']
+
+  [mediatypes.'text/markdown']
+    delimiter = '.'
+    suffixes = ['md', 'mdown', 'markdown']
+
+  [mediatypes.'text/org']
+    delimiter = '.'
+    suffixes = ['org']
+
+  [mediatypes.'text/pandoc']
+    delimiter = '.'
+    suffixes = ['pandoc', 'pdc']
+
+  [mediatypes.'text/plain']
+    delimiter = '.'
+    suffixes = ['txt']
+
+  [mediatypes.'text/rst']
+    delimiter = '.'
+    suffixes = ['rst']
+
+  [mediatypes.'text/tsx']
+    delimiter = '.'
+    suffixes = ['tsx']
+
+  [mediatypes.'text/typescript']
+    delimiter = '.'
+    suffixes = ['ts']
+
+  [mediatypes.'text/x-gotmpl']
+    delimiter = '.'
+    suffixes = ['gotmpl']
+
+  [mediatypes.'text/x-sass']
+    delimiter = '.'
+    suffixes = ['sass']
+
+  [mediatypes.'text/x-scss']
+    delimiter = '.'
+    suffixes = ['scss']
+
+  [mediatypes.'video/3gpp']
+    delimiter = '.'
+    suffixes = ['3gpp', '3gp']
+
+  [mediatypes.'video/mp4']
+    delimiter = '.'
+    suffixes = ['mp4']
+
+  [mediatypes.'video/mpeg']
+    delimiter = '.'
+    suffixes = ['mpg', 'mpeg']
+
+  [mediatypes.'video/ogg']
+    delimiter = '.'
+    suffixes = ['ogv']
+
+  [mediatypes.'video/webm']
+    delimiter = '.'
+    suffixes = ['webm']
+
+  [mediatypes.'video/x-msvideo']
+    delimiter = '.'
+    suffixes = ['avi']
+
+[menus]
+  [[menus.main]]
+    identifier = 'posts'
+    name = 'Posts'
+    pre = '<i class="fas fa-fw fa-archive"></i>'
+    url = '/posts/'
+    weight = 1
+
+[minify]
+  [minify.tdewolff]
+    [minify.tdewolff.css]
+
+    [minify.tdewolff.html]
+      keepdefaultattrvals = true
+      keepdocumenttags = true
+      keependtags = true
+      keepspecialcomments = true
+      templatedelims = ['', '']
+
+    [minify.tdewolff.js]
+      version = 2022
+
+    [minify.tdewolff.json]
+
+    [minify.tdewolff.svg]
+
+    [minify.tdewolff.xml]
+
+[module]
+  noproxy = 'none'
+  private = '*.*'
+  proxy = 'direct'
+  workspace = 'off'
+
+  [module.hugoversion]
+
+  [[module.imports]]
+    path = 'LoveIt'
+
+  [[module.mounts]]
+    source = 'content'
+    target = 'content'
+
+    [module.mounts.sites]
+      [module.mounts.sites.complements]
+
+      [module.mounts.sites.matrix]
+
+  [[module.mounts]]
+    source = 'data'
+    target = 'data'
+
+    [module.mounts.sites]
+      [module.mounts.sites.complements]
+
+      [module.mounts.sites.matrix]
+
+  [[module.mounts]]
+    source = 'layouts'
+    target = 'layouts'
+
+    [module.mounts.sites]
+      [module.mounts.sites.complements]
+
+      [module.mounts.sites.matrix]
+
+  [[module.mounts]]
+    source = 'i18n'
+    target = 'i18n'
+
+    [module.mounts.sites]
+      [module.mounts.sites.complements]
+
+      [module.mounts.sites.matrix]
+
+  [[module.mounts]]
+    source = 'archetypes'
+    target = 'archetypes'
+
+    [module.mounts.sites]
+      [module.mounts.sites.complements]
+
+      [module.mounts.sites.matrix]
+
+  [[module.mounts]]
+    source = 'assets'
+    target = 'assets'
+
+    [module.mounts.sites]
+      [module.mounts.sites.complements]
+
+      [module.mounts.sites.matrix]
+
+  [[module.mounts]]
+    source = 'static'
+    target = 'static'
+
+    [module.mounts.sites]
+      [module.mounts.sites.complements]
+
+      [module.mounts.sites.matrix]
+
+[outputformats]
+  [outputformats.404]
+    ishtml = true
+    mediatype = 'text/html'
+    notalternative = true
+    permalinkable = true
+    ugly = true
+
+  [outputformats.alias]
+    ishtml = true
+    mediatype = 'text/html'
+    ugly = true
+
+  [outputformats.amp]
+    basename = 'index'
+    ishtml = true
+    mediatype = 'text/html'
+    path = 'amp'
+    permalinkable = true
+    rel = 'amphtml'
+
+  [outputformats.calendar]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'text/calendar'
+    protocol = 'webcal://'
+    rel = 'alternate'
+
+  [outputformats.css]
+    basename = 'styles'
+    isplaintext = true
+    mediatype = 'text/css'
+    notalternative = true
+    rel = 'stylesheet'
+
+  [outputformats.csv]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'text/csv'
+    rel = 'alternate'
+
+  [outputformats.gotmpl]
+    isplaintext = true
+    mediatype = 'text/x-gotmpl'
+    notalternative = true
+
+  [outputformats.html]
+    basename = 'index'
+    ishtml = true
+    mediatype = 'text/html'
+    permalinkable = true
+    rel = 'canonical'
+    weight = 10
+
+  [outputformats.json]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'application/json'
+    rel = 'alternate'
+
+  [outputformats.markdown]
+    basename = 'index'
+    isplaintext = true
+    mediatype = 'text/markdown'
+    rel = 'alternate'
+
+  [outputformats.robots]
+    basename = 'robots'
+    isplaintext = true
+    mediatype = 'text/plain'
+    rel = 'alternate'
+    root = true
+
+  [outputformats.rss]
+    basename = 'index'
+    mediatype = 'application/rss+xml'
+    nougly = true
+    rel = 'alternate'
+
+  [outputformats.sitemap]
+    basename = 'sitemap'
+    mediatype = 'application/xml'
+    rel = 'sitemap'
+    ugly = true
+
+  [outputformats.sitemapindex]
+    basename = 'sitemap'
+    mediatype = 'application/xml'
+    rel = 'sitemap'
+    root = true
+    ugly = true
+
+  [outputformats.webappmanifest]
+    basename = 'manifest'
+    isplaintext = true
+    mediatype = 'application/manifest+json'
+    notalternative = true
+    rel = 'manifest'
+
+[outputs]
+  home = ['html', 'rss']
+  page = ['html']
+  rss = ['rss']
+  section = ['html', 'rss']
+  taxonomy = ['html', 'rss']
+  term = ['html', 'rss']
+
+[page]
+  nextprevinsectionsortorder = 'desc'
+  nextprevsortorder = 'desc'
+
+[pagination]
+  pagersize = 10
+  path = 'page'
+
+[params]
+  dateformat = '2006-01-02'
+  defaulttheme = 'auto'
+  description = 'This is my cool site'
+  title = 'My cool site'
+
+  [params.analytics]
+    [params.analytics.fathom]
+
+    [params.analytics.google]
+
+    [params.analytics.plausible]
+
+    [params.analytics.yandexmetrica]
+
+  [params.app]
+    iconcolor = '#5bbad5'
+    themecolor = '#ffffff'
+    tilecolor = '#da532c'
+    title = 'My cool site'
+
+  [params.author]
+    name = 'xxxx'
+
+  [params.cdn]
+    data = 'jsdelivr.yml'
+
+  [params.compatibility]
+
+  [params.cookieconsent]
+    [params.cookieconsent.content]
+
+  [params.footer]
+    author = true
+    copyright = true
+    enable = true
+    hugo = true
+    since = 2022
+
+  [params.header]
+    desktopmode = 'fixed'
+    mobilemode = 'auto'
+
+    [params.header.title]
+      name = 'mpdev articles'
+      pre = "<i class='fas fa-code-branch'></i>"
+
+  [params.home]
+    rss = 10
+
+    [params.home.posts]
+      enable = true
+      paginate = 6
+
+    [params.home.profile]
+      avatarurl = '/images/avatar.png'
+      enable = true
+      social = true
+      subtitle = 'Welcome to mpdev articles'
+      title = 'Maarten Postma'
+      typeit = true
+
+  [params.list]
+    dateformat = '01-02'
+    paginate = 20
+    rss = 10
+
+  [params.page]
+    fontawesome = true
+    fraction = true
+    linktomarkdown = true
+    ruby = true
+
+    [params.page.code]
+      copy = true
+      maxshownlines = 50
+
+      [params.page.code.render]
+        goat = true
+        mermaid = true
+
+    [params.page.comment]
+      [params.page.comment.commento]
+
+      [params.page.comment.disqus]
+
+      [params.page.comment.facebook]
+        numposts = 10
+        width = '100%'
+
+      [params.page.comment.giscus]
+        category = 'Announcements'
+        darktheme = 'dark'
+        emitmetadata = '0'
+        inputposition = 'bottom'
+        lighttheme = 'light'
+        mapping = 'pathname'
+        reactionsenabled = '1'
+
+      [params.page.comment.gitalk]
+
+      [params.page.comment.telegram]
+        colorful = true
+        limit = 5
+
+      [params.page.comment.utterances]
+        darktheme = 'github-dark'
+        issueterm = 'pathname'
+        lighttheme = 'github-light'
+
+      [params.page.comment.valine]
+        avatar = 'mp'
+        highlight = true
+        pagesize = 10
+        recordip = true
+        visitor = true
+
+    [params.page.library]
+      [params.page.library.css]
+
+      [params.page.library.js]
+
+    [params.page.mapbox]
+      darkstyle = 'mapbox://styles/mapbox/dark-v10?optimize=true'
+      fullscreen = true
+      geolocate = true
+      lightstyle = 'mapbox://styles/mapbox/light-v10?optimize=true'
+      navigation = true
+      scale = true
+
+    [params.page.math]
+      copytex = true
+      mhchem = true
+
+    [params.page.seo]
+      [params.page.seo.publisher]
+
+    [params.page.share]
+      enable = true
+      linkedin = true
+      twitter = true
+      whatsapp = true
+      x = true
+
+    [params.page.toc]
+      auto = true
+      enable = true
+
+  [params.search]
+    contentlength = 4000
+    highlighttag = 'em'
+    maxresultlength = 10
+    snippetlength = 30
+    type = 'lunr'
+
+    [params.search.algolia]
+
+    [params.search.fuse]
+      distance = 100
+      minmatchcharlength = 2
+      threshold = 0.3
+
+    [params.search.pagefind]
+      basepath = '/_pagefind/'
+
+  [params.section]
+    dateformat = '01-02'
+    paginate = 20
+    rss = 10
+
+  [params.security]
+
+  [params.seo]
+
+  [params.social]
+    linkedin = 'maarten-postma'
+
+  [params.typeit]
+    cursorchar = '|'
+    cursorspeed = 1000
+    duration = -1
+    speed = 100
+
+  [params.verification]
+
+[permalinks]
+  [permalinks.page]
+
+  [permalinks.section]
+
+  [permalinks.taxonomy]
+
+  [permalinks.term]
+
+[privacy]
+  [privacy.disqus]
+
+  [privacy.googleanalytics]
+    respectdonottrack = true
+
+  [privacy.instagram]
+
+  [privacy.vimeo]
+
+  [privacy.x]
+
+  [privacy.youtube]
+
+[related]
+  threshold = 80
+
+  [[related.indices]]
+    name = 'keywords'
+    type = 'basic'
+    weight = 100
+
+  [[related.indices]]
+    name = 'date'
+    type = 'basic'
+    weight = 10
+
+  [[related.indices]]
+    name = 'tags'
+    type = 'basic'
+    weight = 80
+
+[roles]
+  [roles.guest]
+
+[security]
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^git$', '^npx$', '^postcss$', '^tailwindcss$']
+    osenv = ['(?i)^((HTTPS?|NO)_PROXY|PATH(EXT)?|APPDATA|TE?MP|TERM|GO\w+|(XDG_CONFIG_)?HOME|USERPROFILE|SSH_AUTH_SOCK|DISPLAY|LANG|SYSTEMDRIVE|PROGRAMDATA)$']
+
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']
+
+  [security.http]
+    methods = ['(?i)GET|POST']
+    urls = ['.*']
+
+[segments]
+
+[server]
+  [[server.redirects]]
+    from = '/**'
+    status = 404
+    to = '/404.html'
+
+[services]
+  [services.disqus]
+
+  [services.googleanalytics]
+
+  [services.rss]
+    limit = -1
+
+  [services.x]
+
+[sitemap]
+  filename = 'sitemap.xml'
+  priority = -1
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[uglyurls]
+
+[versions]
+  [versions.'v1.0.0']
