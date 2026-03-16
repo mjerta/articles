@@ -8,7 +8,7 @@ theme = 'LoveIt'
   [params.author]
     name = "Maarten Postma"
     # Try one of these three—they are the most common for this theme family:
-    avatar = "/images/avatar.png"
+    avatar = "images/avatar.png"
     # gravatarEmail = "your-email@example.com" # Alternative if you use Gravatar
     # thumbnail = "/avatar.png"
 [params.header.title]
@@ -30,7 +30,7 @@ theme = 'LoveIt'
     subtitle = "Welcome to mpdev articles" 
     social = true
     typeit = true
-    avatarURL = "/images/avatar.png"
+    avatarURL = "images/avatar.png"
 
 [params.social]
     GitHub = ""

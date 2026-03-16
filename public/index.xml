@@ -1,26 +1,26 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>articles</title>
-        <link>http://localhost:1313/</link>
+        <link>http://localhost:1313/articles/</link>
         <description>This is my cool site</description>
         <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 14 Jan 2026 07:07:07 &#43;0100</lastBuildDate>
-            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="http://localhost:1313/articles/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>My First Post</title>
-    <link>http://localhost:1313/posts/my-first-post/</link>
+    <link>http://localhost:1313/articles/posts/my-first-post/</link>
     <pubDate>Wed, 14 Jan 2026 07:07:07 &#43;0100</pubDate>
     <author>Maarten Postma</author>
-    <guid>http://localhost:1313/posts/my-first-post/</guid>
+    <guid>http://localhost:1313/articles/posts/my-first-post/</guid>
     <description><![CDATA[<h2 id="introduction">Introduction</h2>
 <p>This is <strong>bold</strong> text, and this is <em>emphasized</em> text.</p>
 <p>Visit the <a href="https://gohugo.io" target="_blank" rel="noopener noreffer ">Hugo</a> website!</p>]]></description>
 </item>
 <item>
     <title>My First Post</title>
-    <link>http://localhost:1313/posts/test2/</link>
+    <link>http://localhost:1313/articles/posts/test2/</link>
     <pubDate>Sun, 14 Jan 2024 07:07:07 &#43;0100</pubDate>
     <author>Maarten Postma</author>
-    <guid>http://localhost:1313/posts/test2/</guid>
+    <guid>http://localhost:1313/articles/posts/test2/</guid>
     <description><![CDATA[<h1 id="this-is-another-test">This is another test</h1>
 <p>testing one two three</p>]]></description>
 </item>
