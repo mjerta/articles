@@ -107,5 +107,6 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: ${{ secrets.VPS_PORT || '22' }}
-          source: "public/*"
+          source: "public"
           target: ${{ secrets.VPS_TARGET_DIR || '/var/www/articles' }}
+          strip_components: 1
