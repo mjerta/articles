@@ -1,4 +1,4 @@
-baseURL = 'https://mjerta.github.io/articles/'  # or 'http://your-vps-ip/'
+baseURL = 'https://mjerta.github.io/articles/'
 languageCode = 'en-us'
 title = 'articles'
 theme = 'LoveIt'
@@ -22,7 +22,13 @@ theme = 'LoveIt'
     url = "/posts/"
     pre = '<i class="fas fa-fw fa-archive"></i>'
     weight = 1
-
+  # [[menu.main]]
+  #   identifier = "tests"
+  #   name = "tests"
+  #   url = "/tests/"
+  #   pre = '<i class="fas fa-fw fa-archive"></i>'
+  #   weight = 2
+  #
 [params.home.profile]
     enable = true
     # Added your text here
