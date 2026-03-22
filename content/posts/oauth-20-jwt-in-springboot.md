@@ -1,6 +1,6 @@
 +++
 title = 'OAuth 2.0 + JWT in SpringBoot'
-date = 2026-03-22T13:37:46+01:00
+date = 2026-03-22T13:49:18+01:00
 author = "Maarten Postma"
 authorAvatar = "images/avatar.png"
 +++
@@ -85,17 +85,8 @@ I overrode the OAuth success handler so I can mint my own JWT immediately after 
 AuthenticationSuccessHandler successHandler = (request, response, authentication) -> {
   String token = jwtTokenService.generateToken(authentication);
   HttpSession session = request.getSession(false);
-  boolean testUiLogin = session != null && Boolean.TRUE.equals(
-      session.getAttribute(TestUiLoginConstants.TEST_UI_LOGIN_ATTR));
-
-  if (testUiLogin && session != null) {
-    session.removeAttribute(TestUiLoginConstants.TEST_UI_LOGIN_ATTR);
-    response.setContentType(MediaType.TEXT_HTML_VALUE);
-    response.getWriter().write(buildPopupSuccessHtml(token));
-  } else {
-    response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-    objectMapper.writeValue(response.getWriter(), Map.of("accessToken", token));
-  }
+  response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+  objectMapper.writeValue(response.getWriter(), Map.of("accessToken", token));
 };
 ```
 
