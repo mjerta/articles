@@ -1,10 +1,3 @@
-+++
-title = 'OAuth 2.0 + JWT in SpringBoot'
-date = 2026-03-22T13:49:18+01:00
-author = "Maarten Postma"
-authorAvatar = "images/avatar.png"
-+++
-
 # Using OATH and JWT in SpringBoot
 
 ## Why doing this
@@ -76,6 +69,16 @@ http
         .successHandler(successHandler))
     .oauth2ResourceServer(oauth2 -> oauth2
         .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
+```
+
+### Login redirect endpoint
+Spring Security expects the OAuth2 client flow to start at `/oauth2/authorization/{registrationId}`. I added a small, dedicated controller so navigating to the easy-to-remember `/login` path just hands off to `redirect:/oauth2/authorization/google`, letting the framework take over the authorization code flow.
+
+```java
+@GetMapping("/login")
+public String login() {
+  return "redirect:/oauth2/authorization/google";
+}
 ```
 
 ### SuccesHandler
@@ -171,4 +174,4 @@ public Set<String> checkForRoles(String email) {
 - [Spring Security Reference: OAuth2 Client](https://docs.spring.io/spring-security/reference/servlet/oauth2/client/index.html)
 - [Spring Security Reference: Resource Server JWT](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html)
 - [Spring Boot Reference: Externalized Configuration](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.external-config)
-- [Spring Authorization Server Samples](https://github.com/spring-projects/spring-authorization-server/tree/main/samples)
+- [Spring Authorization Servee Samples](https://github.com/spring-projects/spring-authorization-server/tree/main/samples)
