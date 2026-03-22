@@ -1,4 +1,4 @@
-baseURL = 'https://mjerta.github.io/articles/'
+baseURL = '/'
 languageCode = 'en-us'
 title = 'articles'
 theme = 'LoveIt'
