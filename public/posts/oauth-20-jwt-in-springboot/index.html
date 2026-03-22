@@ -4,18 +4,16 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>OAuth 2.0 &#43; JWT in SpringBoot - articles</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="//localhost:1313/posts/oauth-20-jwt-in-springboot/">
+        <title> - articles</title><meta name="Description" content="This is my cool site"><meta property="og:url" content="//localhost:1313/posts/oauth-20-jwt-in-springboot/">
   <meta property="og:site_name" content="articles">
-  <meta property="og:title" content="OAuth 2.0 &#43; JWT in SpringBoot">
+  <meta property="og:title" content="articles">
   <meta property="og:description" content="Using OATH and JWT in SpringBoot Why doing this I am building an application where I want to have authentication. I used JWT tokens before to authenticate users and manage roles for specific endpoints. This time I wanted to try something different and was already interested in using OAuth 2.0 login with Google. OAuth is an authorization framework that issues access (and ID) tokens rather than traditional server-side sessions. Some libraries still create an HTTP session to store the OAuth state, but the protocol itself is token based. I still want to define my own roles and keep tighter control over the claims the client receives. So I am combining the two approaches. Google handles the OAuth dance, then I read the ID token in my Spring Boot backend, enrich it with my own role model, and mint the JWT that the rest of the API consumes.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2026-03-22T13:49:18+01:00">
-    <meta property="article:modified_time" content="2026-03-22T13:49:18+01:00">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="OAuth 2.0 &#43; JWT in SpringBoot">
+  <meta name="twitter:title" content="articles">
   <meta name="twitter:description" content="Using OATH and JWT in SpringBoot Why doing this I am building an application where I want to have authentication. I used JWT tokens before to authenticate users and manage roles for specific endpoints. This time I wanted to try something different and was already interested in using OAuth 2.0 login with Google. OAuth is an authorization framework that issues access (and ID) tokens rather than traditional server-side sessions. Some libraries still create an HTTP session to store the OAuth state, but the protocol itself is token based. I still want to define my own roles and keep tighter control over the claims the client receives. So I am combining the two approaches. Google handles the OAuth dance, then I read the ID token in my Spring Boot backend, enrich it with my own role model, and mint the JWT that the rest of the API consumes.">
 <meta name="application-name" content="My cool site">
 <meta name="apple-mobile-web-app-title" content="My cool site">
@@ -27,13 +25,13 @@
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "OAuth 2.0 + JWT in SpringBoot",
+        "headline": "",
         "inLanguage": "en-us",
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "\/\/localhost:1313\/posts\/oauth-20-jwt-in-springboot\/"
-        },"genre": "posts","wordcount":  1011 ,
-        "url": "\/\/localhost:1313\/posts\/oauth-20-jwt-in-springboot\/","datePublished": "2026-03-22T13:49:18+01:00","dateModified": "2026-03-22T13:49:18+01:00","publisher": {
+        },"genre": "posts","wordcount":  1060 ,
+        "url": "\/\/localhost:1313\/posts\/oauth-20-jwt-in-springboot\/","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -83,9 +81,9 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">OAuth 2.0 + JWT in SpringBoot</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX"></h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle" aria-hidden="true"></i>Maarten Postma</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="2026-03-22">2026-03-22</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;1011 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt" aria-hidden="true"></i>&nbsp;1060 words&nbsp;
                 <i class="far fa-clock" aria-hidden="true"></i>&nbsp;5 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
@@ -101,6 +99,7 @@
       <ul>
         <li><a href="#applicationproperties">application.properties</a></li>
         <li><a href="#securityfilterchain">SecurityFilterChain</a></li>
+        <li><a href="#login-redirect-endpoint">Login redirect endpoint</a></li>
         <li><a href="#succeshandler">SuccesHandler</a></li>
         <li><a href="#jwtauthenticationconverter">JwtAuthenticationConverter</a></li>
         <li><a href="#jwtdecoder">JwtDecoder</a></li>
@@ -186,6 +185,17 @@ So I am combining the two approaches. Google handles the OAuth dance, then I rea
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">successHandler</span><span class="p">(</span><span class="n">successHandler</span><span class="p">))</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">.</span><span class="na">oauth2ResourceServer</span><span class="p">(</span><span class="n">oauth2</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">oauth2</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">jwt</span><span class="p">(</span><span class="n">jwt</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">jwt</span><span class="p">.</span><span class="na">jwtAuthenticationConverter</span><span class="p">(</span><span class="n">jwtAuthenticationConverter</span><span class="p">())));</span></span></span></code></pre></div></div>
+<h3 id="login-redirect-endpoint">Login redirect endpoint</h3>
+<p>Spring Security expects the OAuth2 client flow to start at <code>/oauth2/authorization/{registrationId}</code>. I added a small, dedicated controller so navigating to the easy-to-remember <code>/login</code> path just hands off to <code>redirect:/oauth2/authorization/google</code>, letting the framework take over the authorization code flow.</p>
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
+    <div class="code-header language-java">
+        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
+        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
+        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
+    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="nd">@GetMapping</span><span class="p">(</span><span class="s">&#34;/login&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">login</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="s">&#34;redirect:/oauth2/authorization/google&#34;</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 <h3 id="succeshandler">SuccesHandler</h3>
 <p>I overrode the OAuth success handler so I can mint my own JWT immediately after Google signs in the user. When the request comes from the lightweight test UI, the handler writes a tiny HTML page that drops the token into <code>localStorage</code> and closes the popup. For API clients, the handler returns <code>{ &quot;accessToken&quot;: &quot;...&quot; }</code>, making it simple to store in memory or cookies.</p>
 <div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
@@ -285,18 +295,18 @@ So I am combining the two approaches. Google handles the OAuth dance, then I rea
 <li><a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/client/index.html" target="_blank" rel="noopener noreffer ">Spring Security Reference: OAuth2 Client</a></li>
 <li><a href="https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html" target="_blank" rel="noopener noreffer ">Spring Security Reference: Resource Server JWT</a></li>
 <li><a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.external-config" target="_blank" rel="noopener noreffer ">Spring Boot Reference: Externalized Configuration</a></li>
-<li><a href="https://github.com/spring-projects/spring-authorization-server/tree/main/samples" target="_blank" rel="noopener noreffer ">Spring Authorization Server Samples</a></li>
+<li><a href="https://github.com/spring-projects/spring-authorization-server/tree/main/samples" target="_blank" rel="noopener noreffer ">Spring Authorization Servee Samples</a></li>
 </ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2026-03-22</span>
+                <span>Updated on 0001-01-01</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="//localhost:1313/posts/oauth-20-jwt-in-springboot/" data-title="OAuth 2.0 &#43; JWT in SpringBoot"><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="//localhost:1313/posts/oauth-20-jwt-in-springboot/"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="//localhost:1313/posts/oauth-20-jwt-in-springboot/" data-title="OAuth 2.0 &#43; JWT in SpringBoot" data-web><i class="fab fa-whatsapp" aria-hidden="true"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on X" data-sharer="x" data-url="//localhost:1313/posts/oauth-20-jwt-in-springboot/" data-title=""><i class="fab fa-x-twitter" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="//localhost:1313/posts/oauth-20-jwt-in-springboot/"><i class="fab fa-linkedin" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="//localhost:1313/posts/oauth-20-jwt-in-springboot/" data-title="" data-web><i class="fab fa-whatsapp" aria-hidden="true"></i></a></span>
             </div>
         </div>
     </div>

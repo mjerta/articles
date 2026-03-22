@@ -3,97 +3,17 @@
         <title>All Posts - articles</title>
         <link>//localhost:1313/posts/</link>
         <description>All Posts | articles</description>
-        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 22 Mar 2026 13:08:27 &#43;0100</lastBuildDate><atom:link href="//localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>AUTH&#43;JWT in SpringBoot</title>
-    <link>//localhost:1313/posts/authjwt-in-springboot/</link>
-    <pubDate>Sun, 22 Mar 2026 13:08:27 &#43;0100</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sun, 22 Mar 2026 13:49:18 &#43;0100</lastBuildDate><atom:link href="//localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>OAuth 2.0 &#43; JWT in SpringBoot</title>
+    <link>//localhost:1313/posts/oauth-20-jwt-in-springboot/</link>
+    <pubDate>Sun, 22 Mar 2026 13:49:18 &#43;0100</pubDate>
     <author>Maarten Postma</author>
-    <guid>//localhost:1313/posts/authjwt-in-springboot/</guid>
-    <description><![CDATA[<h3 id="jwttokenservice">JwtTokenService</h3>
-<p><code>JwtTokenService</code> takes the authenticated <code>OidcUser</code>, copies the relevant Google claims, persists the user when necessary, and finally builds the JWT with issuer timestamps, profile details, and the calculated authorities. Tokens expire after an hour, which is enough for the admin dashboard session without keeping stale privileges around forever.</p>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
-    <div class="code-header language-java">
-        <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
-        <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
-        <span class="copy" title="Copy to clipboard"><i class="far fa-copy" aria-hidden="true"></i></span>
-    </div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">generateToken</span><span class="p">(</span><span class="n">Authentication</span><span class="w"> </span><span class="n">authentication</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">Instant</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Instant</span><span class="p">.</span><span class="na">now</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">googleClaims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">extractClaims</span><span class="p">(</span><span class="n">authentication</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">userService</span><span class="p">.</span><span class="na">checkIfUserExist</span><span class="p">(</span><span class="n">googleClaims</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;email&#34;</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">userService</span><span class="p">.</span><span class="na">registerNewUser</span><span class="p">(</span><span class="n">User</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">externalId</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">googleClaims</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;external_id&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">email</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">googleClaims</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;email&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">firstName</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">googleClaims</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;first_name&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">lastName</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">googleClaims</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;last_name&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">profilePhoto</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">googleClaims</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;profile_photo&#34;</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">lastLoginAt</span><span class="p">(</span><span class="n">now</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="na">build</span><span class="p">());</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">}</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="n">Set</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">authorities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">userService</span><span class="p">.</span><span class="na">checkForRoles</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">googleClaims</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&#34;email&#34;</span><span class="p">));</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Jwts</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">setSubject</span><span class="p">(</span><span class="n">authentication</span><span class="p">.</span><span class="na">getName</span><span class="p">())</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">setIssuedAt</span><span class="p">(</span><span class="n">Date</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">now</span><span class="p">))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">setExpiration</span><span class="p">(</span><span class="n">Date</span><span class="p">.</span><span class="na">from</span><span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="na">plusSeconds</span><span class="p">(</span><span class="n">expirationSeconds</span><span class="p">)))</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">claim</span><span class="p">(</span><span class="s">&#34;authorities&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">authorities</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">signWith</span><span class="p">(</span><span class="n">signingKey</span><span class="p">,</span><span class="w"> </span><span class="n">SignatureAlgorithm</span><span class="p">.</span><span class="na">HS256</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="p">.</span><span class="na">compact</span><span class="p">();</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
-<h3 id="userservice">UserService</h3>
-<p><code>UserService</code> wraps the repository calls so I can keep role logic in one place. It registers new users with either <code>ADMIN</code> or <code>DEFAULT_USER</code>, exposes a <code>checkIfUserExist</code> helper to avoid duplicate rows, and returns the stored authorities as simple strings when the token service needs them. That makes it trivial to plug more roles in later while keeping the authentication flow readable.</p>]]></description>
-</item>
-<item>
-    <title>new articles</title>
-    <link>//localhost:1313/posts/new-articles/</link>
-    <pubDate>Sun, 22 Mar 2026 12:36:06 &#43;0100</pubDate>
-    <author>Maarten Postma</author>
-    <guid>//localhost:1313/posts/new-articles/</guid>
-    <description><![CDATA[<p>eee</p>
-<p>vim.notify(&ldquo;Collector entry saved to &quot; .. target, vim.log.levels.INFO)
-end
-end
-vim.keymap.set(&ldquo;n&rdquo;, &ldquo;<!-- raw HTML omitted -->ce&rdquo;, open_collector_float, { desc = &ldquo;Edit article collector&rdquo; })</p>]]></description>
-</item>
-<item>
-    <title>testing</title>
-    <link>//localhost:1313/posts/testing/</link>
-    <pubDate>Sun, 22 Mar 2026 12:15:20 &#43;0100</pubDate>
-    <author>Maarten Postma</author>
-    <guid>//localhost:1313/posts/testing/</guid>
-    <description><![CDATA[<h1 id="just-oath-what-is-the-difference">Just OATH what is the difference</h1>
+    <guid>//localhost:1313/posts/oauth-20-jwt-in-springboot/</guid>
+    <description><![CDATA[<h1 id="using-oath-and-jwt-in-springboot">Using OATH and JWT in SpringBoot</h1>
 <h2 id="why-doing-this">Why doing this</h2>
-<h2 id="create-user-and-user-roles-persistently">Create user and user roles persistently</h2>
-<h2 id="secured-endpoints">Secured endpoints</h2>
-<p>end</p>
-<p>vim.list_extend(content, body_lines)
-vim.fn.writefile(content, target)</p>]]></description>
-</item>
-<item>
-    <title>Test</title>
-    <link>//localhost:1313/posts/test/</link>
-    <pubDate>Mon, 16 Mar 2026 22:07:58 &#43;0100</pubDate>
-    <author>Maarten Postma</author>
-    <guid>//localhost:1313/posts/test/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
-    <title>My First Post</title>
-    <link>//localhost:1313/posts/my-first-post/</link>
-    <pubDate>Wed, 14 Jan 2026 07:07:07 &#43;0100</pubDate>
-    <author>Maarten Postma</author>
-    <guid>//localhost:1313/posts/my-first-post/</guid>
-    <description><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>This is <strong>bold</strong> text, and this is <em>emphasized</em> text.</p>
-<p>Visit the <a href="https://gohugo.io" target="_blank" rel="noopener noreffer ">Hugo</a> website!</p>]]></description>
-</item>
-<item>
-    <title>My First Post</title>
-    <link>//localhost:1313/posts/test2/</link>
-    <pubDate>Sun, 14 Jan 2024 07:07:07 &#43;0100</pubDate>
-    <author>Maarten Postma</author>
-    <guid>//localhost:1313/posts/test2/</guid>
-    <description><![CDATA[<h1 id="this-is-another-test">This is another test</h1>
-<p>testing one two three</p>]]></description>
+<p>I am building an application where I want to have authentication. I used JWT tokens before to authenticate users and manage roles for specific endpoints.
+This time I wanted to try something different and was already interested in using OAuth 2.0 login with Google. OAuth is an authorization framework that issues access (and ID) tokens rather than traditional server-side sessions. Some libraries still create an HTTP session to store the OAuth state, but the protocol itself is token based. I still want to define my own roles and keep tighter control over the claims the client receives.
+So I am combining the two approaches. Google handles the OAuth dance, then I read the ID token in my Spring Boot backend, enrich it with my own role model, and mint the JWT that the rest of the API consumes.</p>]]></description>
 </item>
 </channel>
 </rss>
