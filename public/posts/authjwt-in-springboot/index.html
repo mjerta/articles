@@ -23,7 +23,7 @@ public String generateToken(Authentication authentication) { Instant now = Insta
 <meta name="apple-mobile-web-app-title" content="My cool site">
 <meta name="referrer" content="no-referrer" /><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost:1313/posts/authjwt-in-springboot/" /><link rel="prev" href="//localhost:1313/posts/new-articles/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost:1313/posts/authjwt-in-springboot/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/css/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -107,7 +107,7 @@ public String generateToken(Authentication authentication) { Instant now = Insta
 </nav></div>
             </div><div class="content" id="content"><h3 id="jwttokenservice">JwtTokenService</h3>
 <p><code>JwtTokenService</code> takes the authenticated <code>OidcUser</code>, copies the relevant Google claims, persists the user when necessary, and finally builds the JWT with issuer timestamps, profile details, and the calculated authorities. Tokens expire after an hour, which is enough for the admin dashboard session without keeping stale privileges around forever.</p>
-<div class="code-block code-line-numbers" style="counter-reset: code-block 0">
+<div class="code-block code-line-numbers open" style="counter-reset: code-block 0">
     <div class="code-header language-java">
         <span class="code-title"><i class="arrow fas fa-angle-right" aria-hidden="true"></i></span>
         <span class="ellipses"><i class="fas fa-ellipsis-h" aria-hidden="true"></i></span>
@@ -179,7 +179,7 @@ public String generateToken(Authentication authentication) { Instant now = Insta
         </section>
     </div>
 
-    <div class="post-nav"><a href="/posts/new-articles/" class="prev" rel="prev" title="new articles"><i class="fas fa-angle-left" aria-hidden="true"></i>new articles</a></div>
+    <div class="post-nav"></div>
 </div>
 </article></div>
             </main><footer class="footer">
